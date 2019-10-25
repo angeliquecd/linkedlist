@@ -3,16 +3,17 @@
 #include <string.h>
 #include <time.h>
 #include "linkedlist.h"
-struct node * newlist(int a){
+struct node * newlist(){
   struct node *new = malloc(sizeof(struct node));
-  new->i=a;
   new->next=NULL;
   return new;
 }
  void print_list(struct node * list){
    printf("{");
  while (list->next!=NULL){
- printf("%i",list->i);
+   if (list->next->next!=NULL) printf("%i, ",list->i);
+   else printf("%i",list->i);
+ list=list->next;
  }
  printf("}\n");
  }
