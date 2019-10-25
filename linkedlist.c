@@ -24,15 +24,29 @@ struct node * newlist(){
    return new;
  }
  struct node * free_list(struct node * list){
-   struct node * old=list;
+struct node * old=list;
    while (list->next!=NULL){
-     free(list);
-     list++;
-   }
-   return old;
+     struct node * tofree=list;
+     free(tofree);
+     printf("Freed %i\n",list->i);
+     list=list->next;
+}
+/* list=NULL;
+   printf("new pointer: %p\n",list);
+   printf("new pointer: %i\n",list->i);
+    printf("new pointer: %p\n",list->next);*/
+   return list;
  }
+ /*Should take a pointer to a list as a parameter and then go through the
+ entire list freeing each node and return a pointer to the beginning of the
+ list (which should be NULL by then).  */
  struct node * remove_node(struct node *front, int data){
    struct node *beginning=front;
+   if (front->i==data){
+     beginning=front->next;
+     free(front);
+     return beginning;
+   }
    while(front->next->next!=NULL && front->next->i!=data){
      front=front->next;
    }

@@ -15,12 +15,19 @@ for (i=0;i<10;i++){
 printf("Filling list with numbers 0 to 9: ");
 print_list(listy);
   printf("Removing 4: ");
-  remove_node(listy,4);
+  listy=remove_node(listy,4);
   print_list(listy);
   printf("Removing 0: ");
-  remove_node(listy,0);
+  listy=remove_node(listy,0);
+print_list(listy);
+printf("Removing 9: ");
+listy=remove_node(listy,9);
 print_list(listy);
 printf("Removing 100: ");
-remove_node(listy,100);
+listy=remove_node(listy,100);
+print_list(listy);
+printf("Freeing the list:\n");
+listy=free_list(listy);
+printf("New list: ");
 print_list(listy);
 }
