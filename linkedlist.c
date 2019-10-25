@@ -33,10 +33,21 @@ struct node * newlist(){
  }
  struct node * remove_node(struct node *front, int data){
    struct node *beginning=front;
-   while(front->next->i!=data && front->next!=NULL){
-     front++;
+   while(front->next->next!=NULL && front->next->i!=data){
+     front=front->next;
    }
-   if (front->next->i==data) front->next=front->next->next;
+   if (front->next->i==data) {
+     if (front->next->next==NULL) {
+       struct node * tofreeend= front->next;
+       front->next=NULL;
+       free(tofreeend);
+     }
+     else {
+       struct node * tofree= front->next;
+       front->next=front->next->next;
+       free(tofree);
+}
+}
    return beginning;
  }
 /*Remove the node containing data from the list pointed to by front.
