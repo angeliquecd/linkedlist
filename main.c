@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include "linkedlist.c"
+#include "linkedlist.h"
 
 int main(){
 printf("Creating empty list: ");
